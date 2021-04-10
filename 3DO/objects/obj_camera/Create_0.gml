@@ -12,7 +12,7 @@ vertex_begin(grid, global.vFormat);
 var xStart = 0;
 var zStart = 0;
 var size = 120;
-var numX = 5;
+var numX = 10;
 var numZ = 10;
 
 for (var i = 0; i < numX; i++)

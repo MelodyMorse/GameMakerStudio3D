@@ -3,7 +3,9 @@
 var clearColor = make_color_hsv(.7778, .6, 1)
 draw_clear(c_black);
 var camera = camera_get_active();
-var lookFrom = [0,0,0];
+var lookFrom = [x, y, depth]; //[500,400,1000];
+lookAt = [500, 0,500 ]
+/*
 if(target != -1)
 {
 	lookFrom[0] = target.x;
@@ -14,6 +16,7 @@ if(target != -1)
 	lookAt[1] = target.y - dsin(target.look_pitch);
 	lookAt[2] = target.depth - dsin(target.look_dir);
 }
+*/
 var camUp = [0, -1, 0];
 
 var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookAt[0], lookAt[1], lookAt[2], camUp[0], camUp[1], camUp[2]);

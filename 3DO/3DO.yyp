@@ -4,6 +4,7 @@
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},"order":3,},
     {"id":{"name":"scr_rendering","path":"scripts/scr_rendering/scr_rendering.yy",},"order":0,},
+    {"id":{"name":"scrPhysics","path":"scripts/scrPhysics/scrPhysics.yy",},"order":4,},
     {"id":{"name":"oGameObject","path":"objects/oGameObject/oGameObject.yy",},"order":1,},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},"order":3,},
     {"id":{"name":"oUnitTests","path":"objects/oUnitTests/oUnitTests.yy",},"order":0,},
@@ -13,6 +14,7 @@
     {"id":{"name":"spr_smb3_big_block","path":"sprites/spr_smb3_big_block/spr_smb3_big_block.yy",},"order":1,},
     {"id":{"name":"rUnitTests","path":"rooms/rUnitTests/rUnitTests.yy",},"order":1,},
     {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},"order":2,},
+    {"id":{"name":"oPhysicsTester","path":"objects/oPhysicsTester/oPhysicsTester.yy",},"order":5,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
