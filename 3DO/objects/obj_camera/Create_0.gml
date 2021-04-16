@@ -12,13 +12,12 @@ vertex_begin(grid, global.vFormat);
 var xStart = -1200;
 var zStart = 0;
 var size = 120;
-<<<<<<< Updated upstream
+
 var numX = 5;
 var numZ = 10;
-=======
+
 var numX = 30;
 var numZ = 30;
->>>>>>> Stashed changes
 
 for (var i = 0; i < numX; i++)
 {

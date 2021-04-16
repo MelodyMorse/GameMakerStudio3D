@@ -1,5 +1,4 @@
 {
-  "name": "ts_placeholder_ground",
   "spriteId": {
     "name": "spr_placeholder_ground",
     "path": "sprites/spr_placeholder_ground/spr_placeholder_ground.yy",
@@ -39,6 +38,7 @@
     "path": "folders/Tile Sets.yy",
   },
   "resourceVersion": "1.0",
+  "name": "ts_placeholder_ground",
   "tags": [],
   "resourceType": "GMTileSet",
 }
