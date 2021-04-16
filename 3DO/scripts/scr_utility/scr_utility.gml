@@ -1,5 +1,7 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @function SplitString(str, divider)
+/// @description takes a string and a character, splits the string into substrings wherever that character occurs in the string, and returns an array of the substrings 
+/// @param str String to split
+/// @param divider Character that indicates at what place the string will be split 
 function SplitString(str, divider){
 	
 	
@@ -18,10 +20,10 @@ function SplitString(str, divider){
 		}
 		else
 		{
-			
+			//ensure substring is not empty. 
 			if(string_length(subStr) > 0)
 			{
-				//add substring to list
+				//add substring to array
 				arr[arrIndex] = subStr;
 				arrIndex++;
 				//clear substring
@@ -29,6 +31,7 @@ function SplitString(str, divider){
 			}
 		}
 	}
+		//Add final substring to array
 		if(string_length(subStr) > 0)
 		{
 			arr[arrIndex] = subStr;

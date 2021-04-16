@@ -3,6 +3,22 @@
 
 // Inherit the parent event
 event_inherited();
+//controller
+leftPressed = false;
+rightPressed = false;
+//upPressed = false;
+//downPressed = false;
+
+
+virtualController = -1;
+
+//elapsedTime = 0;
+firstPersonContolsActive = false;
+acceleration = 4;
+topSpeed = 10;
+spd = 0;
+
+//velocity = 0;
 
 firstPersonContolsActive = false;
 acceleration = 4;

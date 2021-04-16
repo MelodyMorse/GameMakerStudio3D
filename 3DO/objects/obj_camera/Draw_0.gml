@@ -1,12 +1,14 @@
 
 #region camera update
-
+//var clearColor = make_color_hsv(.7778, .6, 1)
 draw_clear(c_ltgrey);
 var camera = camera_get_active();
-//static cam
-var lookFrom = [x,y, depth]; 
+
+var lookFrom = [600,300, 1500];
+
+//var lookFrom = [x, y, depth]; 
 lookAt = [600, 129, 500] 
-//fps cam
+
 /*if(target != -1)
 {
 	lookFrom[0] = target.x;
