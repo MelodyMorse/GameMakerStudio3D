@@ -1,14 +1,14 @@
 var delta = delta_time * .000001;
-show_debug_message("acceleration add: " + string(acceleration * delta));
-if (virtualController == -1)
-{
-	left_pressed = keyboard_check(vk_left);
-	right_pressed = keyboard_check(vk_right);
-}
+//show_debug_message("acceleration add: " + string(acceleration * delta));
+
+leftPressed = keyboard_check(vk_left);
+rightPressed = keyboard_check(vk_right);
+
 
 #region first person controls
+/*
 //var mousePosX = 
-look_dir -= (window_mouse_get_x() - window_get_width() /2)/ sensitivity; 
+look_dir -= (window_mouse_get_x() - window_get_width() /2) / sensitivity; 
 look_pitch -= (window_mouse_get_y() - window_get_height() /2)/ sensitivity; 
 look_pitch = clamp(look_pitch, -80, 80);
 //lookAt[0] = pos[0] + dcos(look_dir);
@@ -26,7 +26,7 @@ if(keyboard_check(vk_up))
 	x += dcos(look_dir) * walkSpeed;
 	depth -= dsin(look_dir) * walkSpeed;
 }
-<<<<<<< Updated upstream
+#endregion
 
 if(keyboard_check(vk_down))
 {
@@ -38,7 +38,8 @@ if(keyboard_check(vk_right))
 {
 	x += dsin(look_dir) * walkSpeed;
 	depth += dcos(look_dir) * walkSpeed;
-=======
+}
+*/
 #endregion
 //show_debug_message("-topspeed: " + string(-topSpeed))
 if(leftPressed)
@@ -48,7 +49,7 @@ if(leftPressed)
 	if(spd > -topSpeed)
 	{
 		//show_debug_message("code is here")		
-		spd -= acceleration * delta;
+		spd -= acceleration * delta * walkSpeed;
 		
 	}
 	//x += spd;	
@@ -57,24 +58,19 @@ else if(rightPressed)
 {
 	if(spd < topSpeed)
 	{
-		spd += acceleration * delta;
+		spd += acceleration * delta * walkSpeed;
 	}
 	//x += spd;	
->>>>>>> Stashed changes
-}
 
-if keyboard_check(vk_left)
+}
+else
 {
-<<<<<<< Updated upstream
-	x -= dsin(look_dir) * walkSpeed;
-	depth -= dcos(look_dir) * walkSpeed;
-=======
+	
 	if (abs(spd) < acceleration * delta) spd = 0;
 	else if (sign(spd) == -1) spd += acceleration * delta;
 	else if (sign(spd) == 1) spd -= acceleration * delta;
-	
->>>>>>> Stashed changes
-}
+}	
+x += spd;
 
-#endregion
+
 

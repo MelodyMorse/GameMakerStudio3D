@@ -6,21 +6,20 @@ event_inherited();
 //controller
 leftPressed = false;
 rightPressed = false;
-upPressed = false;
-downPressed = false;
+//upPressed = false;
+//downPressed = false;
 
-<<<<<<< Updated upstream
-=======
+
 virtualController = -1;
 
-elapsedTime = 0;
+//elapsedTime = 0;
 firstPersonContolsActive = false;
 acceleration = 4;
 topSpeed = 10;
 spd = 0;
 
-velocity = 0;
->>>>>>> Stashed changes
+//velocity = 0;
+
 look_dir = 0;
 look_pitch = 0;
 sensitivity = 10;
