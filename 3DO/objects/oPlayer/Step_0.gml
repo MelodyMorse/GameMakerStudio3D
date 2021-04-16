@@ -6,6 +6,8 @@ if (virtualController == -1)
 	right_pressed = keyboard_check(vk_right);
 }
 
+//show_debug_message("elapsed Time: " + string(elapsedTime));
+//show_debug_message("delta time: " + string(delta_time));
 #region first person controls
 //var mousePosX = 
 look_dir -= (window_mouse_get_x() - window_get_width() /2)/ sensitivity; 
