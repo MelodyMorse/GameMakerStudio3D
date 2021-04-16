@@ -1,9 +1,15 @@
 
 #region camera update
 var clearColor = make_color_hsv(.7778, .6, 1)
-draw_clear(c_black);
+draw_clear(c_ltgrey);
 var camera = camera_get_active();
+<<<<<<< Updated upstream
 var lookFrom = [0,0,0];
+=======
+var lookFrom = [x, y, depth]; //[500,400,1000];
+lookAt = [x, 0,depth - 500 ]
+/*
+>>>>>>> Stashed changes
 if(target != -1)
 {
 	lookFrom[0] = target.x;
@@ -18,6 +24,7 @@ var camUp = [0, -1, 0];
 
 var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookAt[0], lookAt[1], lookAt[2], camUp[0], camUp[1], camUp[2]);
 //var viewMatrix = 
+var projMatrixOrtho = matrix_build_projection_ortho(1280, 720, 1, 1000000);
 var projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );
 camera_set_view_mat(camera, fpLookAt);
 camera_set_proj_mat(camera, projMatrix );

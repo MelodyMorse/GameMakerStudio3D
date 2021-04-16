@@ -9,19 +9,24 @@ gpu_set_zwriteenable(true);
 #region setup grid
 grid = vertex_create_buffer();
 vertex_begin(grid, global.vFormat);
-var xStart = 0;
+var xStart = -1200;
 var zStart = 0;
 var size = 120;
+<<<<<<< Updated upstream
 var numX = 5;
 var numZ = 10;
+=======
+var numX = 30;
+var numZ = 30;
+>>>>>>> Stashed changes
 
 for (var i = 0; i < numX; i++)
 {
 	
 	for (var j = 0; j < numZ; j++)
 	{
-		var col = c_white;
-		if (j  % 2 ==  i  % 2) {col = c_blue;} 
+		var col = make_color_hsv(140, 255 * 1, 255 * .5);
+		if (j  % 2 ==  i  % 2) {col = make_color_hsv(140, 255 * 1, 255 * .6);} 
 		
 		AddVertexToBuffer(grid, [xStart + i*size,0,zStart + j*size ], [0,-1,0], [0,0], col);
 		AddVertexToBuffer(grid, [xStart + i * size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);

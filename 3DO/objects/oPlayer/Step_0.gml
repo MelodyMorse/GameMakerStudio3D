@@ -1,4 +1,10 @@
-
+var delta = delta_time * .000001;
+show_debug_message("acceleration add: " + string(acceleration * delta));
+if (virtualController == -1)
+{
+	left_pressed = keyboard_check(vk_left);
+	right_pressed = keyboard_check(vk_right);
+}
 
 #region first person controls
 //var mousePosX = 
@@ -20,6 +26,7 @@ if(keyboard_check(vk_up))
 	x += dcos(look_dir) * walkSpeed;
 	depth -= dsin(look_dir) * walkSpeed;
 }
+<<<<<<< Updated upstream
 
 if(keyboard_check(vk_down))
 {
@@ -31,12 +38,42 @@ if(keyboard_check(vk_right))
 {
 	x += dsin(look_dir) * walkSpeed;
 	depth += dcos(look_dir) * walkSpeed;
+=======
+#endregion
+//show_debug_message("-topspeed: " + string(-topSpeed))
+if(leftPressed)
+{
+	//add acceleration to speed every second until top
+	//delta time 
+	if(spd > -topSpeed)
+	{
+		//show_debug_message("code is here")		
+		spd -= acceleration * delta;
+		
+	}
+	//x += spd;	
+}
+else if(rightPressed)
+{
+	if(spd < topSpeed)
+	{
+		spd += acceleration * delta;
+	}
+	//x += spd;	
+>>>>>>> Stashed changes
 }
 
 if keyboard_check(vk_left)
 {
+<<<<<<< Updated upstream
 	x -= dsin(look_dir) * walkSpeed;
 	depth -= dcos(look_dir) * walkSpeed;
+=======
+	if (abs(spd) < acceleration * delta) spd = 0;
+	else if (sign(spd) == -1) spd += acceleration * delta;
+	else if (sign(spd) == 1) spd -= acceleration * delta;
+	
+>>>>>>> Stashed changes
 }
 
 #endregion
