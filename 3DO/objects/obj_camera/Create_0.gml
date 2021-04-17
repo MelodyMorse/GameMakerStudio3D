@@ -1,3 +1,5 @@
+rot = [0,0,0];
+forward = [0,0,1];
 target = -1;
 lookAt = [0, 0, 0];
 look_pitch = 0;

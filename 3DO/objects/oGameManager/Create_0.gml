@@ -9,7 +9,7 @@ vertex_format_add_color();
 global.vFormat = vertex_format_end();
 
 player = instance_create_depth(0, 100, 0, oPlayer);
-cam = instance_create_depth(0,300,1000, obj_camera);
+cam = instance_create_depth(0,300,-1000, obj_camera);
 player.model = LoadOBJFile("JustACube.obj");
 player.texture = sprite_get_texture(spr_block, 0);
 player.scale = [.75,.75,.75];
