@@ -6,38 +6,9 @@ sensitivity = 10;
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
 
-#region setup grid
-grid = vertex_create_buffer();
-vertex_begin(grid, global.vFormat);
-var xStart = -1200;
-var zStart = 0;
-var size = 120;
 
-var numX = 5;
-var numZ = 10;
-
-var numX = 30;
-var numZ = 30;
-
-for (var i = 0; i < numX; i++)
-{
-	
-	for (var j = 0; j < numZ; j++)
-	{
-		var col = make_color_hsv(140, 255 * 1, 255 * .5);
-		if (j  % 2 ==  i  % 2) {col = make_color_hsv(140, 255 * 1, 255 * .6);} 
-		
-		AddVertexToBuffer(grid, [xStart + i*size,0,zStart + j*size ], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + i * size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size + i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-
-		AddVertexToBuffer(grid, [xStart + i* size,0,zStart+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart+ j*size], [0,-1,0], [0,0], col);
-	}
-}
-vertex_end(grid);
-#endregion
+grid = RenderGrid([0,0,0], [30, 30], 120, make_color_hsv(140, 255 * 1, 255 * .5), make_color_hsv(140, 255 * 1, 255 * .6) );
+grid2 = RenderWireframeGrid([0,120,0], [30, 30], 120, c_black);
 #region setup axes
 lines = vertex_create_buffer();
 vertex_begin(lines, global.vFormat);

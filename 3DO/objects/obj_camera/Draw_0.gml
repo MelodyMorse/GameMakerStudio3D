@@ -4,10 +4,10 @@
 draw_clear(c_ltgrey);
 var camera = camera_get_active();
 
-var lookFrom = [600,300, 1500];
+var lookFrom = [x,y, depth];
 
 //var lookFrom = [x, y, depth]; 
-lookAt = [600, 129, 500] 
+lookAt = [0, 129, 0] 
 
 /*if(target != -1)
 {
@@ -44,6 +44,7 @@ gpu_set_zwriteenable(true);
 
 #region render game objects
 vertex_submit(grid, pr_trianglelist, -1);
+vertex_submit(grid2, pr_linelist, -1);
 
 with(oGameObject) 
 {
