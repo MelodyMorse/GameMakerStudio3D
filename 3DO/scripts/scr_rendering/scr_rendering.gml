@@ -68,6 +68,7 @@ function LoadOBJFile(fileName)
 					vertex[0] *= WORLD_UNIT;
 					vertex[1] *= WORLD_UNIT;
 					vertex[2] *= WORLD_UNIT;
+					
 					var texturePoint = ds_list_find_value(uvs, tIndex);
 					//mirror x coord (I don't know why I need to do this)
 					//texturePoint[0] = 1 - texturePoint[0];
@@ -162,13 +163,13 @@ function RenderGrid(origin, dimensions, size,col1, col2)
 			var c = col1;
 			if (j  % 2 ==  i  % 2) {c = col2;} 
 		
-			AddVertexToBuffer(grid, [xStart + i*size,0,zStart + j*size ], [0,-1,0], [0,0], c);
-			AddVertexToBuffer(grid, [xStart + i * size,0,zStart + size+ j*size], [0,-1,0], [0,0], c);
-			AddVertexToBuffer(grid, [xStart + size + i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + i*size,zStart + j*size,0 ], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + i * size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size + i* size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
 
-			AddVertexToBuffer(grid, [xStart + i* size,0,zStart+ j*size], [0,-1,0], [0,0], c);
-			AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], c);
-			AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart+ j*size], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + i* size,zStart+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,zStart+ j*size,0], [0,-1,0], [0,0], c);
 		}
 	}
 	vertex_end(grid);
@@ -193,14 +194,14 @@ function RenderWireframeGrid(origin, dimensions, size, col)
 	//x
 	for(var i = 0; i <= dimensions[0]; i++)
 	{
-		AddVertexToBuffer(grid, [xStart, origin[1], zStart + size * i], [0,0, 1], [0,0], col  );
-		AddVertexToBuffer(grid, [xStart + w, origin[1], zStart + size * i],[0,1,0] , [0,0], col  );
+		AddVertexToBuffer(grid, [xStart, zStart + size * i, origin[1] ], [0,0, 1], [0,0], col  );
+		AddVertexToBuffer(grid, [xStart + w, zStart + size * i, origin[1]],[0,1,0] , [0,0], col  );
 	}
 	//y
 	for(var i = 0; i <= dimensions[1]; i++)
 	{
-			AddVertexToBuffer(grid, [xStart + size * i, origin[1], zStart], [0,0, 1], [0,0], col  );
-			AddVertexToBuffer(grid, [xStart + size * i, origin[1], zStart + l],[0,1,0] , [0,0], col  );
+			AddVertexToBuffer(grid, [xStart + size * i, zStart, origin[1]], [0,0, 1], [0,0], col  );
+			AddVertexToBuffer(grid, [xStart + size * i, zStart + l, origin[1]],[0,1,0] , [0,0], col  );
 	}
 	
 	show_debug_message("buffer: " + string(grid));
@@ -213,23 +214,22 @@ function RenderWireframeGrid(origin, dimensions, size, col)
 	vertex_end(grid);
 	return grid;
 }
-/*
-#region setup axes
-lines = vertex_create_buffer();
-vertex_begin(lines, global.vFormat);
-//z axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_blue);
-AddVertexToBuffer(lines, [0, 0, 100],			[0, 0, 1],	[0,0],	c_blue);
-//x axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_red);
-AddVertexToBuffer(lines, [100, 0, 0],			[0, 0, 1],	[0,0],	c_red);
+function RenderGizmo(origin)
+{
+	var lines = vertex_create_buffer();
+	vertex_begin(lines, global.vFormat);
+	//z axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_blue);
+	AddVertexToBuffer(lines, [origin[0], origin[1], origin[2] + WORLD_UNIT],			[0, 0, 1],	[0,0],	c_blue);
+	//x axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_red);
+	AddVertexToBuffer(lines, [origin[0] + WORLD_UNIT, origin[1], origin[2]],			[0, 0, 1],	[0,0],	c_red);
 
-//y axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_green);
-AddVertexToBuffer(lines, [0, 100, 0],			[0, 0, 1],	[0,0],	c_green);
+	//y axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_green);
+	AddVertexToBuffer(lines, [origin[0], origin[1] + WORLD_UNIT, origin[2]],			[0, 0, 1],	[0,0],	c_green);
 
-vertex_end(lines)
-
+	vertex_end(lines)
+	return lines;
 
 }
-*/
