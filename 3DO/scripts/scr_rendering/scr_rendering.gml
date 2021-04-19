@@ -214,6 +214,7 @@ function RenderWireframeGrid(origin, dimensions, size, col)
 	vertex_end(grid);
 	return grid;
 }
+
 function RenderGizmo(origin)
 {
 	var lines = vertex_create_buffer();

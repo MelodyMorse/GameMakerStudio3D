@@ -7,3 +7,4 @@ wireframe = noone;
 rot = [0,0,0];
 scale = [1,1,1];
 texture = -1;
+renderGizmo = false;

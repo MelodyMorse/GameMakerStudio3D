@@ -49,7 +49,7 @@ gpu_set_zwriteenable(true);
 #region render game objects
 vertex_submit(grid, pr_trianglelist, -1);
 //vertex_submit(grid2, pr_linelist, -1);
-vertex_submit(lines, pr_linelist, -1);
+//vertex_submit(lines, pr_linelist, -1);
 with(oGameObject) 
 {
 	event_perform(ev_draw, 0);
