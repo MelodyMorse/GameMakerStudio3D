@@ -1,3 +1,5 @@
+rot = [0,0,0];
+forward = [0,0,1];
 target = -1;
 lookAt = [0, 0, 0];
 look_pitch = 0;
@@ -6,54 +8,11 @@ sensitivity = 10;
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
 
-#region setup grid
-grid = vertex_create_buffer();
-vertex_begin(grid, global.vFormat);
-var xStart = -1200;
-var zStart = 0;
-var size = 120;
 
-var numX = 5;
-var numZ = 10;
+grid = RenderGrid([0,0,0], [30, 30], 120, make_color_hsv(140, 255 * 1, 255 * .5), make_color_hsv(140, 255 * 1, 255 * .6) );
+grid2 = RenderWireframeGrid([0,0,120], [30, 30], 120, c_black);
 
-var numX = 30;
-var numZ = 30;
-
-for (var i = 0; i < numX; i++)
-{
-	
-	for (var j = 0; j < numZ; j++)
-	{
-		var col = make_color_hsv(140, 255 * 1, 255 * .5);
-		if (j  % 2 ==  i  % 2) {col = make_color_hsv(140, 255 * 1, 255 * .6);} 
-		
-		AddVertexToBuffer(grid, [xStart + i*size,0,zStart + j*size ], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + i * size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size + i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-
-		AddVertexToBuffer(grid, [xStart + i* size,0,zStart+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart + size+ j*size], [0,-1,0], [0,0], col);
-		AddVertexToBuffer(grid, [xStart + size+ i* size,0,zStart+ j*size], [0,-1,0], [0,0], col);
-	}
-}
-vertex_end(grid);
-#endregion
-#region setup axes
-lines = vertex_create_buffer();
-vertex_begin(lines, global.vFormat);
-//z axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_blue);
-AddVertexToBuffer(lines, [0, 0, 100],			[0, 0, 1],	[0,0],	c_blue);
-//x axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_red);
-AddVertexToBuffer(lines, [100, 0, 0],			[0, 0, 1],	[0,0],	c_red);
-
-//y axis
-AddVertexToBuffer(lines, [0, 0, 0],				[0, 0, 1],	[0,0],	c_green);
-AddVertexToBuffer(lines, [0, 100, 0],			[0, 0, 1],	[0,0],	c_green);
-
-vertex_end(lines)
-#endregion
+lines = RenderGizmo([0,0,0]);
 #region init skybox
 
 

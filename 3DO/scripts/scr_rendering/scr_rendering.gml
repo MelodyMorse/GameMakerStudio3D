@@ -53,21 +53,6 @@ function LoadOBJFile(fileName)
 		//close file
 		file_text_close(file);
 		
-		show_debug_message("verticies: ");
-		for(var i = 0; i < ds_list_size(verticies); i++)
-		{
-				show_debug_message( string(ds_list_find_value(verticies, i)));
-		}
-		show_debug_message("uvs: ");
-		for(var i = 0; i < ds_list_size(uvs); i++)
-		{
-				show_debug_message( string(ds_list_find_value(uvs, i)));
-		}
-		show_debug_message("normals: ");
-		for(var i = 0; i < ds_list_size(normals); i++)
-		{
-				show_debug_message( string(ds_list_find_value(normals, i)));
-		}
 		
 		vertex_begin(vBuffer, vFormat);
 		for(var i = 0; i <  ds_list_size(faces); i++)
@@ -83,17 +68,12 @@ function LoadOBJFile(fileName)
 					vertex[0] *= WORLD_UNIT;
 					vertex[1] *= WORLD_UNIT;
 					vertex[2] *= WORLD_UNIT;
+					
 					var texturePoint = ds_list_find_value(uvs, tIndex);
 					//mirror x coord (I don't know why I need to do this)
 					//texturePoint[0] = 1 - texturePoint[0];
 					texturePoint[1] = 1 - texturePoint[1];
 					var n = ds_list_find_value(normals, nIndex);
-					show_debug_message("face: " + string(i) + " point: " + string(j));
-					
-					show_debug_message("vIndex: " + string(vIndex) );
-					show_debug_message("vertex: " + string(vertex));
-					//show_debug_message("uv: " + string(texturePoint));
-					//show_debug_message("normal: " +string(n));
 					
 					AddVertexToBuffer(vBuffer, vertex, n,	texturePoint,	c_white);
 				}
@@ -162,3 +142,94 @@ function StringArrayToReal(strArr, newArrayLength, offset)
 	return realArr;
 }
 
+function RenderGrid(origin, dimensions, size,col1, col2)
+{
+	grid = vertex_create_buffer();
+	vertex_begin(grid, global.vFormat);
+	//calculate width
+	var w = dimensions[0] * size;
+	var xStart = origin[0] - w * 0.5;
+	var l = dimensions[1] * size;
+	var zStart = origin[2] - l * 0.5;
+	
+	var numX = dimensions[0];
+	var numZ = dimensions[1];
+
+	for (var i = 0; i < numX; i++)
+	{
+	
+		for (var j = 0; j < numZ; j++)
+		{
+			var c = col1;
+			if (j  % 2 ==  i  % 2) {c = col2;} 
+		
+			AddVertexToBuffer(grid, [xStart + i*size,zStart + j*size,0 ], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + i * size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size + i* size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
+
+			AddVertexToBuffer(grid, [xStart + i* size,zStart+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,zStart + size+ j*size,0], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,zStart+ j*size,0], [0,-1,0], [0,0], c);
+		}
+	}
+	vertex_end(grid);
+	return grid;
+}
+
+function RenderWireframeGrid(origin, dimensions, size, col)
+{
+	var w = dimensions[0] * size;
+	var xStart = origin[0] - w * 0.5;
+	var l = dimensions[1] * size;
+	var zStart = origin[2] - l * 0.5;
+	
+	//var numX = dimensions[0];
+	//var numZ = dimensions[1];
+	
+	
+	var grid = vertex_create_buffer();
+	vertex_begin(grid, global.vFormat);
+	//AddVertexToBuffer(grid, [xStart, origin[1], origin[2]], [0,1, 0], [0,0], col  );
+	//	AddVertexToBuffer(grid, [xStart + , origin[1], origin[2]],[0,1,0] , [0,0], col  );
+	//x
+	for(var i = 0; i <= dimensions[0]; i++)
+	{
+		AddVertexToBuffer(grid, [xStart, zStart + size * i, origin[1] ], [0,0, 1], [0,0], col  );
+		AddVertexToBuffer(grid, [xStart + w, zStart + size * i, origin[1]],[0,1,0] , [0,0], col  );
+	}
+	//y
+	for(var i = 0; i <= dimensions[1]; i++)
+	{
+			AddVertexToBuffer(grid, [xStart + size * i, zStart, origin[1]], [0,0, 1], [0,0], col  );
+			AddVertexToBuffer(grid, [xStart + size * i, zStart + l, origin[1]],[0,1,0] , [0,0], col  );
+	}
+	
+	show_debug_message("buffer: " + string(grid));
+	//AddVertexToBuffer(grid, [0, 0, 0], [0,0, 1], [0,0], col  );
+			//AddVertexToBuffer(grid, [120, 0, 120],[0,1,0] , [0,0], col  );
+	
+	//AddVertexToBuffer(grid, [origin[0], origin[1], zStart], [0,1,0], [0,0], col  );
+	//AddVertexToBuffer(grid, [origin[0], origin[1], zStart + l],[0,1,0] , [0,0], col  );
+	
+	vertex_end(grid);
+	return grid;
+}
+function RenderGizmo(origin)
+{
+	var lines = vertex_create_buffer();
+	vertex_begin(lines, global.vFormat);
+	//z axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_blue);
+	AddVertexToBuffer(lines, [origin[0], origin[1], origin[2] + WORLD_UNIT],			[0, 0, 1],	[0,0],	c_blue);
+	//x axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_red);
+	AddVertexToBuffer(lines, [origin[0] + WORLD_UNIT, origin[1], origin[2]],			[0, 0, 1],	[0,0],	c_red);
+
+	//y axis
+	AddVertexToBuffer(lines, origin,				[0, 0, 1],	[0,0],	c_green);
+	AddVertexToBuffer(lines, [origin[0], origin[1] + WORLD_UNIT, origin[2]],			[0, 0, 1],	[0,0],	c_green);
+
+	vertex_end(lines)
+	return lines;
+
+}

@@ -1,3 +1,4 @@
+
 var delta = delta_time * .000001;
 //show_debug_message("acceleration add: " + string(acceleration * delta));
 

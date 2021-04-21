@@ -4,11 +4,15 @@
 draw_clear(c_ltgrey);
 var camera = camera_get_active();
 
-var lookFrom = [600,300, 1500];
-
+var lookFrom = [x,y, depth];
+//t xPos = Mathf.Sin(transform.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad);
+//        float yPos = Mathf.Sin(-transform.eulerAngles.x * Mathf.Deg2Rad);
+  //      float zPos = Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.y * Mathf.Deg2Rad);
+ 
 //var lookFrom = [x, y, depth]; 
-lookAt = [600, 129, 500] 
+lookAt = [0, 129, 0] 
 
+//lookAt = [lookFrom[0] + forward[0], lookFrom[1] + forward[1], lookFrom[2] + forward[2]]
 /*if(target != -1)
 {
 	lookFrom[0] = target.x;
@@ -19,7 +23,7 @@ lookAt = [600, 129, 500]
 	lookAt[1] = target.y - dsin(target.look_pitch);
 	lookAt[2] = target.depth - dsin(target.look_dir);
 }*/
-var camUp = [0, -1, 0];
+var camUp = [0, 0, -1];
 
 var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookAt[0], lookAt[1], lookAt[2], camUp[0], camUp[1], camUp[2]);
 //var viewMatrix = 
@@ -44,7 +48,8 @@ gpu_set_zwriteenable(true);
 
 #region render game objects
 vertex_submit(grid, pr_trianglelist, -1);
-
+//vertex_submit(grid2, pr_linelist, -1);
+vertex_submit(lines, pr_linelist, -1);
 with(oGameObject) 
 {
 	event_perform(ev_draw, 0);
