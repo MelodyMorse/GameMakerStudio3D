@@ -1,7 +1,7 @@
 rot = [0,0,0];
 forward = [0,0,1];
 target = -1;
-lookAt = [0, 0, 0];
+lookTo = [0, 0, 0];
 look_pitch = 0;
 look_dir = 0;
 sensitivity = 10;

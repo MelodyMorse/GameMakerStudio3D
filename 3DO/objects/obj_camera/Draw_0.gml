@@ -10,7 +10,7 @@ var lookFrom = [x,y, depth];
   //      float zPos = Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.y * Mathf.Deg2Rad);
  
 //var lookFrom = [x, y, depth]; 
-lookAt = [0, 129, 0] 
+lookTo = [0, 129, 0] 
 
 //lookAt = [lookFrom[0] + forward[0], lookFrom[1] + forward[1], lookFrom[2] + forward[2]]
 /*if(target != -1)
@@ -25,7 +25,7 @@ lookAt = [0, 129, 0]
 }*/
 var camUp = [0, 0, -1];
 
-var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookAt[0], lookAt[1], lookAt[2], camUp[0], camUp[1], camUp[2]);
+var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookTo[0], lookTo[1], lookTo[2], camUp[0], camUp[1], camUp[2]);
 //var viewMatrix = 
 var projMatrixOrtho = matrix_build_projection_ortho(1280, 720, 1, 1000000);
 var projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );

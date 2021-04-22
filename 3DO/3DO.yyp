@@ -2,16 +2,22 @@
   "resources": [
     {"id":{"name":"sprGreen","path":"sprites/sprGreen/sprGreen.yy",},"order":4,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
+    {"id":{"name":"RoomMovement","path":"rooms/RoomMovement/RoomMovement.yy",},"order":1,},
+    {"id":{"name":"scrVectors","path":"scripts/scrVectors/scrVectors.yy",},"order":5,},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},"order":3,},
     {"id":{"name":"scr_rendering","path":"scripts/scr_rendering/scr_rendering.yy",},"order":0,},
     {"id":{"name":"scrPhysics","path":"scripts/scrPhysics/scrPhysics.yy",},"order":4,},
     {"id":{"name":"oGameObject","path":"objects/oGameObject/oGameObject.yy",},"order":1,},
+    {"id":{"name":"ObjPlayer2D","path":"objects/ObjPlayer2D/ObjPlayer2D.yy",},"order":6,},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},"order":3,},
     {"id":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},"order":4,},
+    {"id":{"name":"objRoomManagerMovement","path":"objects/objRoomManagerMovement/objRoomManagerMovement.yy",},"order":5,},
     {"id":{"name":"ts_placeholder_ground","path":"tilesets/ts_placeholder_ground/ts_placeholder_ground.yy",},"order":0,},
     {"id":{"name":"spr_placeholder_ground","path":"sprites/spr_placeholder_ground/spr_placeholder_ground.yy",},"order":0,},
     {"id":{"name":"spr_smb3_big_block","path":"sprites/spr_smb3_big_block/spr_smb3_big_block.yy",},"order":1,},
     {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},"order":2,},
+    {"id":{"name":"objEnemy2D","path":"objects/objEnemy2D/objEnemy2D.yy",},"order":7,},
+    {"id":{"name":"sprRed","path":"sprites/sprRed/sprRed.yy",},"order":5,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
   "Options": [
@@ -28,6 +34,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"RoomMovement","path":"rooms/RoomMovement/RoomMovement.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "Folders": [
