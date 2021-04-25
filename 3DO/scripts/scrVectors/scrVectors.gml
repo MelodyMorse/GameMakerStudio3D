@@ -1,18 +1,33 @@
+/// @function AddVectors2D(v1, v2)
+/// @description Adds two 2D Vectors together and returns sum
+/// @param v1 first 2D Vector (array of length two) to add
+/// @param v2 second 2D Vector (array of length two) to add
 function AddVectors2D(v1, v2)
 {
 	return [v1[0] + v2[0], v1[1] + v2[1] ];	
 }
-function VectorFromTo(from, to)
+/// @function VectorFromTo2D(from, to)
+/// @description Returns the Vector between two 2D points
+/// @param from 2D Vector (array of length two) to start from
+/// @param to 2D Vector (array of length two) representing destination
+function VectorFromTo2D(from, to)
 {
 	return [to[0] - from[0],to[1] - from[1]]
 }
 
-function VectorMagnitude(vector)
+/// @function VectorMagnitude2D
+/// @description Returns the magnitude of a 2D Vector
+/// @param vector 2D Vector (array of length two) to calculate magnitude
+function VectorMagnitude2D(vector)
 {
 	return sqrt(sqr(vector[0]) + sqr(vector[1]))	
 }
 
-function MoveInstanceTo(pos, instance)
+/// @function MoveInstanceTo2D(pos, instance)
+/// @description Moves an instance to a specified position in 2D world space
+/// @param pos 2D point (array of length two) in world space coordinates to move a gameobject to instantly
+/// @param instance Gameobject instance to move
+function MoveInstanceTo2D(pos, instance)
 {
 	var sPos = WorldToScreenVector(pos);
 	instance.x = sPos[0];
@@ -42,7 +57,7 @@ function MultiplyVector(vector, scalar)
 }
 function NormalizedVector(vector)
 {
-	var len = VectorMagnitude(vector);
+	var len = VectorMagnitude2D(vector);
 	return MultiplyVector(vector, 1/len); 	
 }
 function CrossProduct2D(vector1, vector2)
