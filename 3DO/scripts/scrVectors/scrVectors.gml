@@ -45,10 +45,20 @@ function NormalizedVector(vector)
 	var len = VectorMagnitude(vector);
 	return MultiplyVector(vector, 1/len); 	
 }
-
+function CrossProduct2D(vector1, vector2)
+{
+		
+}
 function DrawVector(origin, vector)
 {
 	var p1 = WorldToScreenVector(origin);
 	var p2 = WorldToScreenVector(AddVectors2D(origin, vector));
 	draw_arrow(p1[0], p1[1], p2[0], p2[1],10);		
 }
+
+function DrawCircle(center, radius, outline)
+{
+	var c = WorldToScreenVector(center);
+	draw_circle(c[0], c[1], radius, outline);
+}
+
