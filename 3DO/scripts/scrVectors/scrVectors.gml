@@ -33,7 +33,9 @@ function MoveInstanceTo2D(pos, instance)
 	instance.x = sPos[0];
 	instance.y = sPos[1];
 }
-
+/// @function WorldToScreenVevtor(worldpoint)
+/// @description Takes a point in 2D world space and converts to screen coordinates
+/// @param worldpoint 2D point (array of length 2) in worldspace coordinates
 function WorldToScreenVector(worldPoint)
 {
 	return [global.origin[0] + worldPoint[0] * global.unit, global.origin[1] + -worldPoint[1] * global.unit]
