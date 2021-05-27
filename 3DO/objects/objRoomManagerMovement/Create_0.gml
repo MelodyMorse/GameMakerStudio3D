@@ -14,6 +14,6 @@ e1 = [1,2];
 
 
 player = SpawnObject(p1, ObjPlayer2D);
-player.position = [-3, -1,0];
+//player.position = [-3, -1,0];
 //enemy = SpawnObject(e1, objEnemy2D);
 

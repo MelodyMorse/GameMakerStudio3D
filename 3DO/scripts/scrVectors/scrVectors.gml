@@ -1,10 +1,20 @@
+function Vector3(x, y, z) constructor {
+	self.x = x;
+	self.y = y;
+	self.z = z;
+}
+function Vector2(x, y) constructor {
+	self.x = x;
+	self.y = y;
+}
+
 /// @function AddVectors2D(v1, v2)
 /// @description Adds two 2D Vectors together and returns sum
 /// @param v1 first 2D Vector (array of length two) to add
 /// @param v2 second 2D Vector (array of length two) to add
 function AddVectors2D(v1, v2)
 {
-	return [v1[0] + v2[0], v1[1] + v2[1] ];	
+	return new Vector2(v1.x + v2.x, v1.y + v2.y);	
 }
 /// @function VectorFromTo2D(from, to)
 /// @description Returns the Vector between two 2D points
@@ -24,7 +34,7 @@ function VectorMagnitude2D(vector)
 }
 
 /// @function MoveInstanceTo2D(pos, instance)
-/// @description Moves an instance to a specified position in 2D world space
+/// @description Moves an instance to a specified position in 2D world space instantly
 /// @param pos 2D point (array of length two) in world space coordinates to move a gameobject to instantly
 /// @param instance Gameobject instance to move
 function MoveInstanceTo2D(pos, instance)
