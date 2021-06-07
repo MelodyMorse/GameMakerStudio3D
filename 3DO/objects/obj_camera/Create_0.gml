@@ -1,3 +1,11 @@
+enum CameraMode {
+	Projection,
+	Orthographic
+}
+renderGrid = false;
+renderWireFrameGrid = false;
+renderGizmo = true;
+mode = CameraMode.Projection;
 rot = [0,0,0];
 forward = [0,0,1];
 target = -1;
@@ -5,6 +13,7 @@ lookAt = [0, 0, 0];
 look_pitch = 0;
 look_dir = 0;
 sensitivity = 10;
+
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
 

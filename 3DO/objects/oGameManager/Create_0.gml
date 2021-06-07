@@ -7,6 +7,7 @@ vertex_format_add_texcoord();
 vertex_format_add_color();
 
 global.vFormat = vertex_format_end();
+/*
 coins = [];
 player = instance_create_depth(0, 0, 100, oPlayer);
 cam = instance_create_depth(0,-10 * WORLD_UNIT,WORLD_UNIT * 10, obj_camera);
@@ -22,3 +23,5 @@ for (var i = 0; i < 10; i++)
 	
 	coins[i] = instance_create_depth(xPos * WORLD_UNIT, yPos * WORLD_UNIT, 100, obj_coin);
 }
+*/
+room_goto_next();

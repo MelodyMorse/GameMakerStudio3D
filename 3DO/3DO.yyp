@@ -11,8 +11,11 @@
     {"id":{"name":"oGameManager","path":"objects/oGameManager/oGameManager.yy",},"order":4,},
     {"id":{"name":"ts_placeholder_ground","path":"tilesets/ts_placeholder_ground/ts_placeholder_ground.yy",},"order":0,},
     {"id":{"name":"spr_placeholder_ground","path":"sprites/spr_placeholder_ground/spr_placeholder_ground.yy",},"order":0,},
+    {"id":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},"order":2,},
     {"id":{"name":"spr_smb3_big_block","path":"sprites/spr_smb3_big_block/spr_smb3_big_block.yy",},"order":1,},
+    {"id":{"name":"rmEmpty","path":"rooms/rmEmpty/rmEmpty.yy",},"order":1,},
     {"id":{"name":"spr_yellow","path":"sprites/spr_yellow/spr_yellow.yy",},"order":5,},
+    {"id":{"name":"oTemplateRoomManager","path":"objects/oTemplateRoomManager/oTemplateRoomManager.yy",},"order":6,},
     {"id":{"name":"spr_block","path":"sprites/spr_block/spr_block.yy",},"order":2,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
   ],
@@ -30,6 +33,8 @@
     "children": [],
   },
   "RoomOrderNodes": [
+    {"roomId":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
+    {"roomId":{"name":"rmEmpty","path":"rooms/rmEmpty/rmEmpty.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
   ],
   "Folders": [
