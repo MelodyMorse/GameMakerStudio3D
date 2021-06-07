@@ -57,8 +57,8 @@ gpu_set_zwriteenable(true);
 
 #region render game objects
 if (renderGrid) vertex_submit(grid, pr_trianglelist, -1);
-if (renderWireFrameGrid) vertex_submit(grid2, pr_linelist, -1);
-if (renderGizmo) vertex_submit(lines, pr_linelist, -1);
+if (renderWireFrameGrid) vertex_submit(wireGrid, pr_linelist, -1);
+if (renderGizmo) vertex_submit(gizmo, pr_linelist, -1);
 with(oGameObject) 
 {
 	event_perform(ev_draw, 0);

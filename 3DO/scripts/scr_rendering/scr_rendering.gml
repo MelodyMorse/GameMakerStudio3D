@@ -142,7 +142,7 @@ function StringArrayToReal(strArr, newArrayLength, offset)
 	return realArr;
 }
 
-function RenderGrid(origin, dimensions, size,col1, col2)
+function buffer_build_grid(origin, dimensions, size,col1, col2)
 {
 	grid = vertex_create_buffer();
 	vertex_begin(grid, global.vFormat);
@@ -176,7 +176,7 @@ function RenderGrid(origin, dimensions, size,col1, col2)
 	return grid;
 }
 
-function RenderWireframeGrid(origin, dimensions, size, col)
+function buffer_build_wireframe_grid(origin, dimensions, size, col)
 {
 	var w = dimensions[0] * size;
 	var xStart = origin[0] - w * 0.5;
@@ -214,7 +214,7 @@ function RenderWireframeGrid(origin, dimensions, size, col)
 	vertex_end(grid);
 	return grid;
 }
-function RenderGizmo(origin)
+function buffer_build_gizmo(origin)
 {
 	var lines = vertex_create_buffer();
 	vertex_begin(lines, global.vFormat);
