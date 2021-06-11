@@ -1,7 +1,6 @@
-//pos = [0,0]
-//1 meter = 1 world unit
-//1 sec = 60 frames
-//acceleration = 9.8 m/sec/sec
+event_inherited();
+model = buffer_primitive_quad();
+texture = sprite_get_texture(sprGreen, 0);
 delay = 0;
 position = new Vector3(0, 0, 0);
 velocity = new Vector3(0,0,0);

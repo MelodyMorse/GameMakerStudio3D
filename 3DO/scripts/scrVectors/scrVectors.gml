@@ -48,7 +48,7 @@ function MoveInstanceTo2D(pos, instance)
 /// @param worldpoint 2D point (array of length 2) in worldspace coordinates
 function WorldToScreenVector(worldPoint)
 {
-	return [global.origin[0] + worldPoint[0] * global.unit, global.origin[1] + -worldPoint[1] * global.unit]
+	return [global.origin[0] + worldPoint[0] * WORLD_UNIT, global.origin[1] + -worldPoint[1] * WORLD_UNIT]
 }
 
 function ScreenToWorldVector(screenPoint)
@@ -59,8 +59,20 @@ function ScreenToWorldVector(screenPoint)
 
 function SpawnObject(pos, obj)
 {
-	var sPoint = WorldToScreenVector(pos)
-	return instance_create_layer(sPoint[0], sPoint[1],"Instances", obj);
+	try
+	{
+		var _x = pos.x * WORLD_UNIT;
+		var _y = pos.y * WORLD_UNIT;
+		var _z = pos.z * WORLD_UNIT;
+	}
+	catch(ex)
+	{
+		var _x = 0;
+		var _y = 0;
+		var _z = 0;
+	}
+	
+	return instance_create_depth(_x, _y, _z, obj);
 	
 }
 function MultiplyVector(vector, scalar)

@@ -273,3 +273,19 @@ function buffer_build_gizmo(origin)
 	return lines;
 
 }
+function buffer_primitive_quad()
+{
+	var quad = vertex_create_buffer();
+	vertex_begin(quad, global.vFormat);
+	
+			AddVertexToBuffer(quad, [0,0, 0], [0,-1,0], [0,1], c_white);
+			AddVertexToBuffer(quad, [0,0, WORLD_UNIT], [0,-1,0], [0,0], c_white);
+			AddVertexToBuffer(quad, [WORLD_UNIT,0, WORLD_UNIT], [0,-1,0], [1,0], c_white);
+
+			AddVertexToBuffer(quad, [0,0, 0], [0,-1,0], [0,1], c_white);
+			AddVertexToBuffer(quad, [WORLD_UNIT,0,WORLD_UNIT], [0,-1,0], [1,0], c_white);
+			AddVertexToBuffer(quad, [WORLD_UNIT,0,0], [0,-1,0], [1,1], c_white);
+	
+	vertex_end(quad)
+	return quad;
+}
