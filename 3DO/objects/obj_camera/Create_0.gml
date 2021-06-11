@@ -1,3 +1,11 @@
+enum CameraMode {
+	Projection,
+	Orthographic
+}
+renderGrid = false;
+renderWireFrameGrid = false;
+renderGizmo = true;
+mode = CameraMode.Projection;
 rot = [0,0,0];
 forward = [0,0,1];
 target = -1;
@@ -5,14 +13,15 @@ lookTo = [0, 0, 0];
 look_pitch = 0;
 look_dir = 0;
 sensitivity = 10;
+
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
 
 
-grid = RenderGrid([0,0,0], [30, 30], 120, make_color_hsv(140, 255 * 1, 255 * .5), make_color_hsv(140, 255 * 1, 255 * .6) );
-grid2 = RenderWireframeGrid([0,0,120], [30, 30], 120, c_black);
+grid = buffer_build_grid([0,0,0], [30, 30], WORLD_UNIT, make_color_hsv(140, 255 * 1, 255 * .5), make_color_hsv(140, 255 * 1, 255 * .6) );
+wireGrid = buffer_build_wireframe_grid([0,0,0], [30, 30], WORLD_UNIT, c_black);
 
-lines = RenderGizmo([0,0,0]);
+gizmo = buffer_build_gizmo([0,0,0]);
 #region init skybox
 
 

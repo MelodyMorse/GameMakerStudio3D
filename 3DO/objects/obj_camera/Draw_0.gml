@@ -27,10 +27,19 @@ var camUp = [0, 0, -1];
 
 var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookTo[0], lookTo[1], lookTo[2], camUp[0], camUp[1], camUp[2]);
 //var viewMatrix = 
-var projMatrixOrtho = matrix_build_projection_ortho(1280, 720, 1, 1000000);
-var projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );
+var projMatrix = undefined; matrix_build_projection_ortho(1280, 720, 1, 1000000);
+switch (mode) {
+    case CameraMode.Projection:
+        projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );
+        break;
+    case CameraMode.Orthographic:
+        projMatrix = matrix_build_projection_ortho(window_get_width(), window_get_height(), 1, 32000);
+        break;
+}
+
 camera_set_view_mat(camera, fpLookAt);
 camera_set_proj_mat(camera, projMatrix );
+//camera_set_or
 camera_apply(camera);
 #endregion
 
@@ -47,9 +56,9 @@ gpu_set_zwriteenable(true);
 
 
 #region render game objects
-vertex_submit(grid, pr_trianglelist, -1);
-//vertex_submit(grid2, pr_linelist, -1);
-vertex_submit(lines, pr_linelist, -1);
+if (renderGrid) vertex_submit(grid, pr_trianglelist, -1);
+if (renderWireFrameGrid) vertex_submit(wireGrid, pr_linelist, -1);
+if (renderGizmo) vertex_submit(gizmo, pr_linelist, -1);
 with(oGameObject) 
 {
 	event_perform(ev_draw, 0);

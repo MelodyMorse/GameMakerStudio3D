@@ -69,10 +69,13 @@ function LoadOBJFile(fileName)
 					vertex[1] *= WORLD_UNIT;
 					vertex[2] *= WORLD_UNIT;
 					
-					var texturePoint = ds_list_find_value(uvs, tIndex);
+					var texturePointRaw = ds_list_find_value(uvs, tIndex);
+					var newV = 1 - texturePointRaw[1];
+					var texturePoint = [texturePointRaw[0], newV];
+					//var texturePoint = ds_list_find_value(uvs, tIndex);
 					//mirror x coord (I don't know why I need to do this)
 					//texturePoint[0] = 1 - texturePoint[0];
-					texturePoint[1] = 1 - texturePoint[1];
+					//texturePoint[1] = 1 - texturePoint[1];
 					var n = ds_list_find_value(normals, nIndex);
 					
 					AddVertexToBuffer(vBuffer, vertex, n,	texturePoint,	c_white);
@@ -141,8 +144,45 @@ function StringArrayToReal(strArr, newArrayLength, offset)
 	
 	return realArr;
 }
+function buffer_build_grid_vertical(origin, dimensions, size,col1, col2)
+{
+	grid = vertex_create_buffer();
+	vertex_begin(grid, global.vFormat);
+	
+	var w = dimensions[0] * size;
+	var xStart = origin[0] - w * 0.5;
+	var l = dimensions[1] * size;
+	var yStart = origin[1] - l * 0.5;
+	var z = origin[2];
+	var numX = dimensions[0];
+	var numY = dimensions[1];
+	
+	size = WORLD_UNIT;
+	
+	for(var i = 0; i < numX; i++)
+	{
+		for(var j = 0; j < numY; j++)	
+		{
+			var c = col1;
+			if (j  % 2 ==  i  % 2) {c = col2;} 
+			AddVertexToBuffer(grid, [xStart + i*size,z, yStart + j*size ], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + i * size,z, yStart + size+ j*size], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size + i* size,z, yStart + size+ j*size], [0,-1,0], [0,0], c);
 
-function RenderGrid(origin, dimensions, size,col1, col2)
+			AddVertexToBuffer(grid, [xStart + i* size,z, yStart+ j*size], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,z,yStart + size+ j*size], [0,-1,0], [0,0], c);
+			AddVertexToBuffer(grid, [xStart + size+ i* size,z,yStart+ j*size], [0,-1,0], [0,0], c);
+		}
+	}
+			
+			
+	
+	vertex_end(grid);
+	return grid;
+	
+	
+}
+function buffer_build_grid(origin, dimensions, size,col1, col2)
 {
 	grid = vertex_create_buffer();
 	vertex_begin(grid, global.vFormat);
@@ -176,7 +216,7 @@ function RenderGrid(origin, dimensions, size,col1, col2)
 	return grid;
 }
 
-function RenderWireframeGrid(origin, dimensions, size, col)
+function buffer_build_wireframe_grid(origin, dimensions, size, col)
 {
 	var w = dimensions[0] * size;
 	var xStart = origin[0] - w * 0.5;
@@ -214,7 +254,7 @@ function RenderWireframeGrid(origin, dimensions, size, col)
 	vertex_end(grid);
 	return grid;
 }
-function RenderGizmo(origin)
+function buffer_build_gizmo(origin)
 {
 	var lines = vertex_create_buffer();
 	vertex_begin(lines, global.vFormat);
