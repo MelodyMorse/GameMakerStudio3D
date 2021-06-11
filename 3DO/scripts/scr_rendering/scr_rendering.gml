@@ -69,10 +69,13 @@ function LoadOBJFile(fileName)
 					vertex[1] *= WORLD_UNIT;
 					vertex[2] *= WORLD_UNIT;
 					
-					var texturePoint = ds_list_find_value(uvs, tIndex);
+					var texturePointRaw = ds_list_find_value(uvs, tIndex);
+					var newV = 1 - texturePointRaw[1];
+					var texturePoint = [texturePointRaw[0], newV];
+					//var texturePoint = ds_list_find_value(uvs, tIndex);
 					//mirror x coord (I don't know why I need to do this)
 					//texturePoint[0] = 1 - texturePoint[0];
-					texturePoint[1] = 1 - texturePoint[1];
+					//texturePoint[1] = 1 - texturePoint[1];
 					var n = ds_list_find_value(normals, nIndex);
 					
 					AddVertexToBuffer(vBuffer, vertex, n,	texturePoint,	c_white);

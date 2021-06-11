@@ -1,9 +1,11 @@
 {
   "resources": [
+    {"id":{"name":"oRmMainManager","path":"objects/oRmMainManager/oRmMainManager.yy",},"order":7,},
     {"id":{"name":"sprGreen","path":"sprites/sprGreen/sprGreen.yy",},"order":4,},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"order":2,},
     {"id":{"name":"scr_utility","path":"scripts/scr_utility/scr_utility.yy",},"order":3,},
     {"id":{"name":"obj_coin","path":"objects/obj_coin/obj_coin.yy",},"order":5,},
+    {"id":{"name":"uvtest","path":"sprites/uvtest/uvtest.yy",},"order":6,},
     {"id":{"name":"scr_rendering","path":"scripts/scr_rendering/scr_rendering.yy",},"order":0,},
     {"id":{"name":"scrPhysics","path":"scripts/scrPhysics/scrPhysics.yy",},"order":4,},
     {"id":{"name":"oGameObject","path":"objects/oGameObject/oGameObject.yy",},"order":1,},
@@ -34,8 +36,8 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"rmInit","path":"rooms/rmInit/rmInit.yy",},},
-    {"roomId":{"name":"rmEmpty","path":"rooms/rmEmpty/rmEmpty.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"roomId":{"name":"rmEmpty","path":"rooms/rmEmpty/rmEmpty.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Sprites.yy","order":1,"resourceVersion":"1.0","name":"Sprites","tags":[],"resourceType":"GMFolder",},
@@ -68,6 +70,8 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"skybox.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"luigi.obj","resourceType":"GMIncludedFile",},
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"luigi.mtl","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"boxobj.obj","resourceType":"GMIncludedFile",},
+    {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"boxobj.mtl","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
     "IDEVersion": "2.3.2.560",
