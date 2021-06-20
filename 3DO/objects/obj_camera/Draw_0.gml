@@ -4,20 +4,42 @@
 draw_clear(c_ltgrey);
 var camera = camera_get_active();
 
-var lookFrom = [x,y, depth];
+//var lookFrom = [x,y, depth];
+//t xPos = Mathf.Sin(transform.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad);
+//        float yPos = Mathf.Sin(-transform.eulerAngles.x * Mathf.Deg2Rad);
+  //      float zPos = Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.y * Mathf.Deg2Rad);
  
- 
-lookAt = [x + forward[0] * WORLD_UNIT, depth + forward[1] * WORLD_UNIT, y + forward[2]*WORLD_UNIT]; 
+//var lookFrom = [x, y, depth]; 
 
-var lookDir = DirectionFromTo(lookFrom, lookAt);
-show_debug_message("look dir: " + string(lookDir));
+
+//lookAt = [lookFrom[0] + forward[0], lookFrom[1] + forward[1], lookFrom[2] + forward[2]]
+/*if(target != -1)
+{
+	lookFrom[0] = target.x;
+	lookFrom[1] = target.y;
+	lookFrom[2] = target.depth;
+
+	lookAt[0] = target.x + dcos(target.look_dir);
+	lookAt[1] = target.y - dsin(target.look_pitch);
+	lookAt[2] = target.depth - dsin(target.look_dir);
+}*/
 var camUp = [0, 0, -1];
 
 var fpLookAt = matrix_build_lookat(lookFrom[0], lookFrom[1], lookFrom[2], lookAt[0], lookAt[1], lookAt[2], camUp[0], camUp[1], camUp[2]);
- 
-var projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );
+//var viewMatrix = 
+var projMatrix = undefined; matrix_build_projection_ortho(1280, 720, 1, 1000000);
+switch (mode) {
+    case CameraMode.Projection:
+        projMatrix = matrix_build_projection_perspective_fov(60, window_get_width()/ window_get_height(), 1, 32000 );
+        break;
+    case CameraMode.Orthographic:
+        projMatrix = matrix_build_projection_ortho(window_get_width(), window_get_height(), 1, 32000);
+        break;
+}
+
 camera_set_view_mat(camera, fpLookAt);
 camera_set_proj_mat(camera, projMatrix );
+//camera_set_or
 camera_apply(camera);
 #endregion
 
@@ -34,9 +56,9 @@ gpu_set_zwriteenable(true);
 
 
 #region render game objects
-vertex_submit(grid, pr_trianglelist, -1);
-//vertex_submit(grid2, pr_linelist, -1);
-//vertex_submit(lines, pr_linelist, -1);
+if (renderGrid) vertex_submit(grid, pr_trianglelist, -1);
+if (renderWireFrameGrid) vertex_submit(wireGrid, pr_linelist, -1);
+if (renderGizmo) vertex_submit(gizmo, pr_linelist, -1);
 with(oGameObject) 
 {
 	event_perform(ev_draw, 0);

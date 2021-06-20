@@ -39,3 +39,14 @@ function SplitString(str, divider){
 	return arr;
 }
 
+function DirectionFromTo(from, to)
+{
+	var dir =	[ 
+					from[0] - to[0],
+					from[1] - to[1],
+					from[2] - to[2]
+				]
+	return dir;
+}
+
+//function StringifyVector()
