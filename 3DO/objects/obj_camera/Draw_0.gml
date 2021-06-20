@@ -4,13 +4,13 @@
 draw_clear(c_ltgrey);
 var camera = camera_get_active();
 
-var lookFrom = [x,y, depth];
+//var lookFrom = [x,y, depth];
 //t xPos = Mathf.Sin(transform.eulerAngles.y * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad);
 //        float yPos = Mathf.Sin(-transform.eulerAngles.x * Mathf.Deg2Rad);
   //      float zPos = Mathf.Cos(transform.eulerAngles.x * Mathf.Deg2Rad) * Mathf.Cos(transform.eulerAngles.y * Mathf.Deg2Rad);
  
 //var lookFrom = [x, y, depth]; 
-lookAt = [0, 129, 0] 
+
 
 //lookAt = [lookFrom[0] + forward[0], lookFrom[1] + forward[1], lookFrom[2] + forward[2]]
 /*if(target != -1)

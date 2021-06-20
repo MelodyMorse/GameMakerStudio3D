@@ -1,5 +1,6 @@
-cam = instance_create_depth(0,-10 * WORLD_UNIT,WORLD_UNIT * 10, obj_camera);
-//cam.renderGrid = true;
+cam = instance_create_depth(0,-10 * WORLD_UNIT,WORLD_UNIT * 1, obj_camera);
+cam.renderGrid = true;
+cam.enableFPC = true;
 //coins = [];
 //player = instance_create_depth(0, 0, 100, oPlayer);
 //cam = instance_create_depth(0,-10 * WORLD_UNIT,WORLD_UNIT * 10, obj_camera);

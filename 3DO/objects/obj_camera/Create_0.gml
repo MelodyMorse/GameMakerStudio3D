@@ -5,14 +5,19 @@ enum CameraMode {
 renderGrid = false;
 renderWireFrameGrid = false;
 renderGizmo = true;
+enableFPC = false;
 mode = CameraMode.Projection;
 rot = [0,0,0];
 forward = [0,0,1];
 target = -1;
+lookFrom = [x, y, depth];
 lookAt = [0, 0, 0];
 look_pitch = 0;
 look_dir = 0;
-sensitivity = 10;
+vSensitivity = 10;
+hSensitivity = 20;
+moveSpeed = WORLD_UNIT;
+gamepad_set_axis_deadzone(0, .1);
 
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
