@@ -5,9 +5,9 @@ cam.enableFPC = true;
 //player = instance_create_depth(0, 0, 100, oPlayer);
 //cam = instance_create_depth(0,-10 * WORLD_UNIT,WORLD_UNIT * 10, obj_camera);
 
-box = instance_create_depth(0,0,WORLD_UNIT, oPlayer);
+box = instance_create_depth(0,0,0, oPlayer);
 //box.y = WORLD_UNIT;
-box.model = LoadOBJFile("JustACube.obj");
+box.model = LoadOBJFile("sphere.obj");
 box.texture = sprite_get_texture(uvtest, 0);
 
 //player.scale = [.75,.75,.75];
