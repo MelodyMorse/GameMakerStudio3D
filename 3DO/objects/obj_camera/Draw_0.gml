@@ -63,7 +63,11 @@ if(active)
 	if (renderGizmo) vertex_submit(gizmo, pr_linelist, -1);
 	with(oGameObject) 
 	{
-		event_perform(ev_draw, 0);
+		if(object_index != obj_camera)
+		{
+			
+			event_perform(ev_draw, 0);
+		}
 	}
 }
 #endregion

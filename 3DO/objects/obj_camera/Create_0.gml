@@ -1,3 +1,4 @@
+event_inherited();
 enum CameraMode {
 	Projection,
 	Orthographic
