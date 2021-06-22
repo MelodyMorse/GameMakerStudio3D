@@ -1,7 +1,9 @@
+event_inherited();
 enum CameraMode {
 	Projection,
 	Orthographic
 }
+active = false;
 renderGrid = false;
 renderWireFrameGrid = false;
 renderGizmo = true;
