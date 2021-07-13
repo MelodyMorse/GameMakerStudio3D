@@ -16,10 +16,10 @@ lookFrom = [x, y, depth];
 lookAt = [0, 0, 0];
 look_pitch = 0;
 look_dir = 0;
-vSensitivity = 10;
-hSensitivity = 20;
-moveSpeed = WORLD_UNIT;
-gamepad_set_axis_deadzone(0, .1);
+vSensitivity = 100;
+hSensitivity = 100;
+moveSpeed = WORLD_UNIT * 4;
+gamepad_set_axis_deadzone(0, .2);
 
 gpu_set_ztestenable(true);
 gpu_set_zwriteenable(true);
@@ -49,7 +49,7 @@ vertex_end(bkg);
 
 skybox = LoadOBJFile("skybox.obj");
 //skybox.scale = [1024,	1024, 1024];
-//skybox.texture = sprite_get_texture(sInterstellarSkybox, 0);
+//skybox.texture = sprite_get_texture(spr_skybox, 0);
 #endregion
 
 

@@ -1,3 +1,4 @@
+//cube.rot[2] += 1;
 if keyboard_check_pressed(vk_space)
 {
 	if (cam.active)

@@ -46,14 +46,14 @@ if(active)
 	#endregion
 
 	#region render skybox
-	/*
+	
 	gpu_set_zwriteenable(false);
-	matrix_set(matrix_world, matrix_build(pos[0], pos[1], pos[2], 0,0,0, 100, 100, 100));
-	vertex_submit(skybox, pr_trianglelist,sprite_get_texture(sInterstellarSkybox, 0));
+	matrix_set(matrix_world, matrix_build(0, 0, 0, 0,0,0, 100, 100, 100));
+	vertex_submit(skybox, pr_trianglelist,sprite_get_texture(spr_skybox, 0));
 	//vertex_submit(bkg, pr_trianglelist, -1);
 	matrix_set(matrix_world, matrix_build_identity());
 	gpu_set_zwriteenable(true);
-	*/
+
 	#endregion
 
 
